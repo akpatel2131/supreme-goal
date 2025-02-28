@@ -89,7 +89,7 @@ const Footer = () => {
     
         <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
           <p>©2023. All Rights Reserved.</p>
-          <p>Supreme House, 110, 16th Road Chembur, Mumbai - 400071</p>
+          <p className="text-center">Supreme House, 110, 16th Road Chembur, Mumbai - 400071</p>
         </div>
       </div>
     </footer>
