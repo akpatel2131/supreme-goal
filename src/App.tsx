@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import TopNav from "./components/TopNav";
 import Footer from './components/Footer';
 const PerformanceSection = lazy(() => import('./components/PerformanceSection'));
+const ContactInfo = lazy(() => import('./components/ContactInfo'));
 import "./App.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
@@ -12,6 +13,7 @@ function App() {
       <TopNav />
       <Suspense fallback={<div>Loading...</div>}>
         <PerformanceSection />
+        <ContactInfo />
       </Suspense>
       <Footer />
     </div>
