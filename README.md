@@ -28,7 +28,7 @@
 - Ensured full keyboard navigation for accessibility.
 
 ## Deployment
-- Deployed on **Netlify** : .
+- Deployed on **Netlify** : https://supreme-group-kp.netlify.app/
 
 ## Future Improvements
 - Integrate animations using **Framer Motion**.
