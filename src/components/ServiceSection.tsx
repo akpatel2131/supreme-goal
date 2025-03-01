@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useWindowSize } from "react-use";
 import { Pause, Play } from "lucide-react";
 
@@ -24,27 +24,26 @@ const ServiceSection = () => {
   const {width} = useWindowSize();
   const isTablet = width < 960;
 
+  const handleScroll = useCallback(() => { 
+    const scrollPosition = window.scrollY;
+    if (scrollPosition > 700) {
+      setActiveButton(1);
+    } else {
+      setActiveButton(0);
+    }
+
+    if (scrollPosition > 400 && scrollPosition < 1000) {
+      setIsSticky(true);
+    } else {
+      setIsSticky(false);
+    }
+  },[])
+
   useEffect(() => {
     if(isTablet) return;
-
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      if (scrollPosition > 700) {
-        setActiveButton(1);
-      } else {
-        setActiveButton(0);
-      }
-
-      if (scrollPosition > 400 && scrollPosition < 1000) {
-        setIsSticky(true);
-      } else {
-        setIsSticky(false);
-      }
-    };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  });
+  }, [handleScroll]);
 
   const vehicleTypes = useMemo(() => {
     if (activeButton === 0) {
@@ -119,12 +118,12 @@ const ServiceSection = () => {
 
   return (
     <section
-      className={`bg-black min-h-screen md:min-h-auto min-w-screen ${
-        isSticky ? "sticky top-0 z-10" : ""
-      }`}
+      className={`bg-black min-h-auto lg:min-h-[1000px] min-w-screen`}
     >
-      <div className="container mx-auto pt-16 pb-16 max-w-7xl px-4 md:px-6 lg:px-8">
-        <div className="text-center pb-10 md:pb-16 lg:pb-20">
+      <div className={`container mx-auto pt-16 pb-16 max-w-7xl px-4 md:px-6 lg:px-8 ${
+        isSticky ? "sticky top-0 z-10" : ""
+      }`}>
+        <div className="text-center pb-10">
           <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-light leading-tight">
             <span className="block">
               Evolving the drive with{" "}
